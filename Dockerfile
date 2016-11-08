@@ -9,8 +9,10 @@ CMD ["/sbin/my_init"]
 RUN apt-get update -qq && apt-get install -qy wget curl gnupg ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN echo "America/Los_Angeles" > /etc/timezone
-#RUN ruby-switch --set ruby2.2
+RUN rm -f /etc/localtime
+RUN ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 RUN locale-gen en_US.utf8
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US:en
