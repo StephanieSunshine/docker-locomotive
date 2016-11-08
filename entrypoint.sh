@@ -24,7 +24,7 @@ if [ ! -f /home/app/engine/app ]; then
 	#ln -sf /var/lib/gems/2.2.0/gems/railties-4.2.6/bin/rails /usr/local/bin/rails
 	cd /home/app; rails new engine --skip-bundle --skip-active-record --skip
 	cd /home/app/engine
-	echo "gem 'locomotivecms', '~> 3.1.1'" >> "Gemfile"
+	echo "gem 'locomotivecms', '~> 3.1.1', :git => 'https://github.com/locomotivecms/engine.git'" >> "Gemfile"
 	echo "gem 'puma'" >> "Gemfile"
 fi
 
@@ -36,7 +36,7 @@ chown -R app:app /var/lib/gems
 if [ ! -f config/initializers/locomotive.rb ]; then
 	echo 
 	echo "Installing locomotive..."
-	cd /home/app/engine; ./bin/rails generate locomotive:install
+	cd /home/app/engine; rails generate locomotive:install
 	sed -i 's/localhost/db/g' /home/app/engine/config/mongoid.yml
 fi
 chown app:app -R /home/app
