@@ -5,7 +5,7 @@ This is a Docker configuration for running [LocomotiveCMS Engine v3.1.1](https:/
 ## Usage
 
 ```
-git clone git@github.com:brentkearney/docker-locomotive.git
+git clone git@github.com:StephanieSunshine/docker-locomotive.git
 cd docker-locomotive
 docker-compose up
 ```
