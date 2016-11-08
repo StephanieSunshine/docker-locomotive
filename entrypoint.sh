@@ -3,11 +3,15 @@ source /etc/profile.d/rvm.sh
 
 echo
 echo "Setting system timezone..."
-echo "
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata
+
+#echo "America/Los_Angeles" > /etc/timezone
+#dpkg-reconfigure -f noninteractive tzdata
 
 echo
 echo "Setting GEM environment..."
+
 rm -rf ~root/.gem
 #export GEM_HOME /var/lib/gems/2.2.0
 #export GEM_PATH /var/lib/gems/2.2.0
