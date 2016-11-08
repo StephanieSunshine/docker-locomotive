@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
+source /etc/profile.d/rvm.sh
 
 echo
 echo "Setting system timezone..."
+echo "
 dpkg-reconfigure -f noninteractive tzdata
 
 echo
@@ -24,7 +26,8 @@ if [ ! -f /home/app/engine/app ]; then
 	#ln -sf /var/lib/gems/2.2.0/gems/railties-4.2.6/bin/rails /usr/local/bin/rails
 	cd /home/app; rails new engine --skip-bundle --skip-active-record --skip
 	cd /home/app/engine
-	echo "gem 'locomotivecms', '~> 3.1.1', :git => 'https://github.com/locomotivecms/engine.git'" >> "Gemfile"
+	
+	echo "gem 'locomotivecms', '~> 3.1.1', :git => 'https://github.com/locomotivecms/engine.git', :tag => 'v3.1.1'" >> "Gemfile"
 	echo "gem 'puma'" >> "Gemfile"
 fi
 
