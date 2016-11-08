@@ -7,9 +7,9 @@ dpkg-reconfigure -f noninteractive tzdata
 echo
 echo "Setting GEM environment..."
 rm -rf ~root/.gem
-export GEM_HOME /var/lib/gems/2.2.0
-export GEM_PATH /var/lib/gems/2.2.0
-export GEM_SPEC_CACHE /var/lib/gems/2.2.0/specs
+#export GEM_HOME /var/lib/gems/2.2.0
+#export GEM_PATH /var/lib/gems/2.2.0
+#export GEM_SPEC_CACHE /var/lib/gems/2.2.0/specs
 gem environment
 
 echo
@@ -20,8 +20,8 @@ gem install bundler
 if [ ! -f /home/app/engine/app ]; then
 	echo
 	echo "Setting up Ruby on Rails..."
-	gem install rails -v 4.2.6
-	ln -sf /var/lib/gems/2.2.0/gems/railties-4.2.6/bin/rails /usr/local/bin/rails
+	gem install rails -v 4.2.7.1
+	#ln -sf /var/lib/gems/2.2.0/gems/railties-4.2.6/bin/rails /usr/local/bin/rails
 	cd /home/app; rails new engine --skip-bundle --skip-active-record --skip
 	cd /home/app/engine
 	echo "gem 'locomotivecms', '~> 3.1.1'" >> "Gemfile"
